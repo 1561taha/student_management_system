@@ -17,12 +17,12 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    Long roll_no;
+    private Long roll_no;
 
-    String name;
+   private String name;
 
-    Long mobile_no;
+   private Long mobile_no;
 
-    String marks;
+   private String marks;
 
 }
