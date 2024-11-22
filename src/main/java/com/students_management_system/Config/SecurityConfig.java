@@ -36,7 +36,9 @@ public class SecurityConfig {
                http
                 .csrf(customizer ->customizer.disable())
                 .authorizeHttpRequests(request -> request
-
+                        .requestMatchers("/login","/register").permitAll()
+                        .requestMatchers("/Admin").hasRole("Admin")
+                        .requestMatchers("/students").hasRole("Users")
                         .anyRequest()
                         .authenticated() )
                 .httpBasic(Customizer.withDefaults())

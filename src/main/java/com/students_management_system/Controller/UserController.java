@@ -23,7 +23,7 @@ public class UserController {
     public String  login(@RequestBody User user){
         Authentication authentication=authenticationManager.authenticate
                 (new UsernamePasswordAuthenticationToken
-                        (user.getUsername(),user.getUsername()));
+                        (user.getUsername(),user.getPassword()));
 
         if (authentication.isAuthenticated()){
             return "log in successfull";

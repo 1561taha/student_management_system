@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController()
+@RequestMapping("/students")
 public class StudentController {
 
     @Autowired
@@ -16,36 +17,20 @@ public class StudentController {
 
 
 
-    @GetMapping("/students")
+    @GetMapping("/")
     public List<Student> allstudents(){
         return studentService.showall();
     }
 
-    @GetMapping("/students/{id}")
+    @GetMapping("/{id}")
     public Optional<Student> viewstudent(@PathVariable("id") long roll_no)
     {
        return studentService.showstudent(roll_no);
     }
 
-    @PostMapping("/students")
-    public void  addstudent(@RequestBody Student student)
-    {
-        studentService.savestudent(student);
-    }
-    @PutMapping("/students")
-    public void updatestudent(@RequestBody Student student)
-    {
-        studentService.update(student);
-    }
 
-    @DeleteMapping("/students/{id}")
-    public void deletestudent(@PathVariable("id") long rollno)
-    {
-        studentService.delete(rollno);
 
-    }
-
-    @GetMapping("/searchstudents/{Name}")
+    @GetMapping("/search/{Name}")
     public Optional<Student> search(@PathVariable("Name") String Name){
         return studentService.searchbyname(Name);
     }
